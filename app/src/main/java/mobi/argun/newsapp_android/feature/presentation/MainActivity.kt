@@ -1,4 +1,4 @@
-package mobi.argun.newsapp_android.feature
+package mobi.argun.newsapp_android.feature.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import mobi.argun.newsapp_android.feature.ui.theme.NewsappandroidTheme
+import mobi.argun.newsapp_android.ui.theme.NewsappandroidTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

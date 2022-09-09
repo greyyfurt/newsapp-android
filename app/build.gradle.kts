@@ -1,6 +1,8 @@
 plugins {
     id(Config.Plugins.androidApp)
     id(Config.Plugins.kotlinPlug)
+    id(Config.Plugins.hiltPlug)
+    kotlin(Config.Plugins.kotlinKapt)
 }
 
 android {
@@ -57,6 +59,36 @@ dependencies {
     implementation(Libraries.AndroidX.composePreview)
     implementation(Libraries.AndroidX.lifecycleKtx)
     implementation(Libraries.AndroidX.composeActivity)
+    implementation(Libraries.AndroidX.composeNavigation)
+    implementation(Libraries.AndroidX.constraintLayout)
+
+    // Coroutine
+    implementation(Libraries.Coroutines.coroutinesCore)
+    implementation(Libraries.Coroutines.coroutinesAndroid)
+
+    // Hilt
+    implementation(Libraries.Utils.hiltAndroid)
+    kapt(Libraries.Utils.hiltAndroidCompiler)
+    implementation(Libraries.Utils.hiltViewModel)
+    kapt(Libraries.Utils.hiltCompiler)
+    implementation(Libraries.Utils.hiltNavigation)
+
+    // Retrofit
+    implementation(Libraries.Retrofit.retrofit2)
+    implementation(Libraries.Retrofit.gsonConverter)
+
+    // OkHttp
+    implementation(Libraries.OkHttp.okHttp3)
+    implementation(Libraries.OkHttp.okHttpLogging)
+
+    // Timber
+    implementation(Libraries.Utils.timber)
+
+    // Utils
+    implementation(Libraries.Utils.gson)
+    implementation(Libraries.Utils.coil)
+    implementation(Libraries.Utils.facebookStetho)
+    implementation(Libraries.Utils.stethoOkhttp3)
 
     // Test
     testImplementation(Libraries.Test.junit)
