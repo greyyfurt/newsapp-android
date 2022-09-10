@@ -77,6 +77,11 @@ dependencies {
     implementation(Libraries.Retrofit.retrofit2)
     implementation(Libraries.Retrofit.gsonConverter)
 
+    // Room
+    implementation(Libraries.Room.roomRuntime)
+    kapt(Libraries.Room.roomCompiler)
+    implementation(Libraries.Room.roomKtx)
+
     // OkHttp
     implementation(Libraries.OkHttp.okHttp3)
     implementation(Libraries.OkHttp.okHttpLogging)

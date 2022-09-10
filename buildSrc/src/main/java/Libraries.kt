@@ -45,4 +45,9 @@ object Libraries {
         const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     }
+    object Room {
+        const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVers}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVers}"
+        const val roomKtx = "androidx.room:room-ktx:${Versions.roomVers}"
+    }
 }

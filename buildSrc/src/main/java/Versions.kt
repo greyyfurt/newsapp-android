@@ -43,4 +43,7 @@ object Versions {
 
     // Coroutine
     const val coroutine = "1.6.1"
+
+    // Room
+    const val roomVers = "2.2.5"
 }
