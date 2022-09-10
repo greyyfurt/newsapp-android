@@ -10,6 +10,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import mobi.argun.newsapp_android.feature.presentation.favorites.FavoritesScreen
+import mobi.argun.newsapp_android.feature.presentation.news.NewsScreen
+import mobi.argun.newsapp_android.feature.presentation.search.SearchScreen
+import mobi.argun.newsapp_android.feature.presentation.util.Screen
 import mobi.argun.newsapp_android.ui.theme.NewsappandroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,22 +29,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.NewsScreen.route
+                    ) {
+                        composable(Screen.NewsScreen.route) {
+                            NewsScreen(navController = navController)
+                        }
+
+                        composable(Screen.FavoritesScreen.route) {
+                            FavoritesScreen(navController = navController)
+                        }
+
+                        composable(Screen.SearchScreen.route) {
+                            SearchScreen(navController = navController)
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    NewsappandroidTheme {
-        Greeting("Android")
     }
 }
