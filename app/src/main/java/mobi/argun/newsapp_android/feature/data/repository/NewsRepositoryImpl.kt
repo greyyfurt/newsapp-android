@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import mobi.argun.newsapp_android.core.util.*
 import mobi.argun.newsapp_android.core.util.dispatcher.DispatcherProvider
-import mobi.argun.newsapp_android.feature.data.data_source.ArticleDao
+import mobi.argun.newsapp_android.feature.data.source.ArticleDao
 import mobi.argun.newsapp_android.feature.data.remote.model.mapper.GetNewsMapper
 import mobi.argun.newsapp_android.feature.data.source.NewsRemoteDataSource
 import mobi.argun.newsapp_android.feature.domain.entity.Article

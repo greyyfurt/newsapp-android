@@ -9,7 +9,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import mobi.argun.newsapp_android.App
-import mobi.argun.newsapp_android.feature.data.data_source.ArticleDatabase
+import mobi.argun.newsapp_android.feature.data.source.ArticleDatabase
 import javax.inject.Singleton
 
 /**

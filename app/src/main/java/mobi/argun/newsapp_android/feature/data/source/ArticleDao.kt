@@ -1,4 +1,4 @@
-package mobi.argun.newsapp_android.feature.data.data_source
+package mobi.argun.newsapp_android.feature.data.source
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
