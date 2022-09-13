@@ -18,21 +18,19 @@ class GetNewsMapper : DomainMapper<GetNewsDto, GetNews> {
             totalResults = model.totalResults,
             articles = model.articles?.map { articleDto ->
                 Article(
-                    author = articleDto?.author,
-                    content = articleDto?.content,
-                    description = articleDto?.description,
-                    publishedAt = articleDto?.publishedAt,
-                    title = articleDto?.title,
-                    url = articleDto?.url,
-                    urlToImage = articleDto?.urlToImage,
-                    source = articleDto
-                        ?.source
-                        ?.let { sourceDto ->
-                            Source(
-                                id = sourceDto.id,
-                                name = sourceDto.name
-                            )
-                        }
+                    author = articleDto.author,
+                    content = articleDto.content,
+                    description = articleDto.description,
+                    publishedAt = articleDto.publishedAt,
+                    title = articleDto.title,
+                    url = articleDto.url,
+                    urlToImage = articleDto.urlToImage,
+                    source = articleDto.source?.let { sourceDto ->
+                        Source(
+                            id = sourceDto.id,
+                            name = sourceDto.name
+                        )
+                    }
                 )
             }
         )

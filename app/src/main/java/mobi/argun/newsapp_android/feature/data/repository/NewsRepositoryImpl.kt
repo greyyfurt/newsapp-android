@@ -5,8 +5,10 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import mobi.argun.newsapp_android.core.util.*
 import mobi.argun.newsapp_android.core.util.dispatcher.DispatcherProvider
+import mobi.argun.newsapp_android.feature.data.data_source.ArticleDao
 import mobi.argun.newsapp_android.feature.data.remote.model.mapper.GetNewsMapper
 import mobi.argun.newsapp_android.feature.data.source.NewsRemoteDataSource
+import mobi.argun.newsapp_android.feature.domain.entity.Article
 import mobi.argun.newsapp_android.feature.domain.entity.GetNews
 import mobi.argun.newsapp_android.feature.domain.repository.NewsRepository
 
@@ -18,6 +20,7 @@ class NewsRepositoryImpl(
     private val dispatcher: DispatcherProvider,
     private val newsRemoteDataSource: NewsRemoteDataSource,
     private val getNewsMapper: GetNewsMapper,
+    private val dao: ArticleDao
 ): NewsRepository {
 
     override fun getNews(pageNum: Int): Flow<DataResult<GetNews>> =
@@ -33,4 +36,8 @@ class NewsRepositoryImpl(
                 else -> emit(Empty)
             }
         }.flowOn(dispatcher.io)
+
+    override suspend fun addToFavorite(article: Article) {
+        dao.insertArticle(article)
+    }
 }

@@ -14,7 +14,7 @@ interface NewsApiService {
     @GET("v2/top-headlines")
     suspend fun getNews(
         @Query("country")
-        countryCode: String = "tr",
+        countryCode: String = "us",
         @Query("page")
         pageNum: Int = 1,
         @Query("apiKey")

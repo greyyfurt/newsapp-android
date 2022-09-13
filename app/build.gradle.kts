@@ -62,6 +62,9 @@ dependencies {
     implementation(Libraries.AndroidX.composeNavigation)
     implementation(Libraries.AndroidX.constraintLayout)
 
+    // Google
+    implementation(Libraries.Google.systemUiController)
+
     // Coroutine
     implementation(Libraries.Coroutines.coroutinesCore)
     implementation(Libraries.Coroutines.coroutinesAndroid)

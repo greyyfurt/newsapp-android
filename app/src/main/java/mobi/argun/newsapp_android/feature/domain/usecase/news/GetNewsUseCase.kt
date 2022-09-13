@@ -1,4 +1,4 @@
-package mobi.argun.newsapp_android.feature.domain.usecase
+package mobi.argun.newsapp_android.feature.domain.usecase.news
 
 import mobi.argun.newsapp_android.feature.domain.repository.NewsRepository
 import javax.inject.Inject

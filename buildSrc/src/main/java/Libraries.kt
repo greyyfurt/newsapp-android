@@ -50,4 +50,7 @@ object Libraries {
         const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVers}"
         const val roomKtx = "androidx.room:room-ktx:${Versions.roomVers}"
     }
+    object Google {
+        const val systemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.systemUiController}"
+    }
 }

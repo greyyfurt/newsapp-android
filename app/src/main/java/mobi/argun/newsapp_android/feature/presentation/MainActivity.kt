@@ -13,12 +13,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import mobi.argun.newsapp_android.feature.presentation.favorites.FavoritesScreen
 import mobi.argun.newsapp_android.feature.presentation.news.NewsScreen
 import mobi.argun.newsapp_android.feature.presentation.search.SearchScreen
 import mobi.argun.newsapp_android.feature.presentation.util.Screen
 import mobi.argun.newsapp_android.ui.theme.NewsappandroidTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

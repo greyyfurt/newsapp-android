@@ -4,16 +4,14 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import mobi.argun.newsapp_android.core.base.BaseViewModel
-import mobi.argun.newsapp_android.core.util.Empty
-import mobi.argun.newsapp_android.core.util.Error
-import mobi.argun.newsapp_android.core.util.Loading
-import mobi.argun.newsapp_android.core.util.Success
-import mobi.argun.newsapp_android.feature.domain.usecase.GetNewsUseCase
+import mobi.argun.newsapp_android.core.util.*
+import mobi.argun.newsapp_android.feature.domain.usecase.news.AddToFavoritesUseCase
+import mobi.argun.newsapp_android.feature.domain.usecase.news.GetNewsUseCase
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsServicesState
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsUiEvents
 import javax.inject.Inject
@@ -25,48 +23,76 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val getNewsUseCase: GetNewsUseCase,
+    private val addToFavoritesUseCase: AddToFavoritesUseCase
 ) : BaseViewModel() {
-
-    private var curPage = 1
 
     private val _state = mutableStateOf(NewsServicesState())
     val state: State<NewsServicesState> = _state
 
+    private var getServicesJob: Job? = null
+
+    init {
+        getBreakingNews()
+    }
+
+    private fun getBreakingNews() {
+        getServicesJob?.cancel()
+
+        viewModelScope.launch {
+            getServicesJob =
+                getNewsUseCase.invoke(state.value.page).onEach { dataResult ->
+                    _state.value = when (dataResult) {
+                        Empty ->
+                            state.value.copy(
+                                isLoading = false,
+                                isEmpty = true,
+                                errMessage = "",
+                            )
+                        is Error ->
+                            state.value.copy(
+                                isLoading = false,
+                                isEmpty = false,
+                                errMessage = dataResult.errorMessage
+                                    ?: "Something went wrong",
+                            )
+                        Loading ->
+                            state.value.copy(
+                                isLoading = true,
+                                isEmpty = false,
+                                errMessage = "",
+                            )
+                        is Success -> when {
+                            dataResult.data?.totalResults == null || dataResult.data.articles == null -> state.value.copy(
+                                isLoading = false,
+                                isEmpty = false,
+                                errMessage = ""
+                            )
+                            else -> {
+                                state.value.copy(
+                                    isLoading = false,
+                                    isEmpty = false,
+                                    errMessage = "",
+                                    page = state.value.page + 1,
+                                    articles = state.value.articles.plus(dataResult.data.articles),
+                                    endReached = state.value.page * Constants.PAGE_SIZE >= dataResult.data.totalResults
+                                )
+                            }
+                        }
+                    }
+                }.launchIn(this)
+        }
+    }
+
     fun onEvent(event: NewsUiEvents) {
         viewModelScope.launch {
-            getNewsUseCase.invoke(curPage).onEach { dataResult ->
-                _state.value = when(dataResult) {
-                    Empty ->
-                        state.value.copy(
-                            isLoading = false,
-                            isEmpty = true,
-                            errMessage = "",
-                            articles = null
-                        )
-                    is Error ->
-                        state.value.copy(
-                            isLoading = false,
-                            isEmpty = false,
-                            errMessage = dataResult.errorMessage
-                                ?: "Something went wrong",
-                            articles = null
-                        )
-                    Loading ->
-                        state.value.copy(
-                            isLoading = true,
-                            isEmpty = false,
-                            errMessage = "",
-                            articles = null
-                        )
-                    is Success ->
-                        state.value.copy(
-                            isLoading = false,
-                            isEmpty = false,
-                            errMessage = "",
-                            articles = dataResult.data?.articles
-                        )
+            when (event) {
+                NewsUiEvents.LoadMoreNews -> {
+                    getBreakingNews()
                 }
-            }.launchIn(this)
+                is NewsUiEvents.AddToFavorites -> {
+                    addToFavoritesUseCase(event.article)
+                }
+            }
         }
     }
 }

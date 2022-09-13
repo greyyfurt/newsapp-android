@@ -10,5 +10,7 @@ data class NewsServicesState(
     val isLoading: Boolean = false,
     val isEmpty: Boolean = false,
     val errMessage: String = "",
-    val articles: List<Article?>? = null
+    var articles: List<Article> = emptyList(),
+    var page: Int = 1,
+    val endReached: Boolean = false
 )

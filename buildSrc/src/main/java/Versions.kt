@@ -46,4 +46,7 @@ object Versions {
 
     // Room
     const val roomVers = "2.2.5"
+
+    // Google
+    const val systemUiController = "0.23.1"
 }

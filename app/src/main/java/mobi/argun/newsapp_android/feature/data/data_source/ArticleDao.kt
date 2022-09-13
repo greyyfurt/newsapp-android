@@ -17,7 +17,7 @@ interface ArticleDao {
     fun getArticleById(id: Int): Article?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertArticle(article: Article): Long
+    suspend fun insertArticle(article: Article)
 
     @Delete
     suspend fun deleteArticle(article: Article)
