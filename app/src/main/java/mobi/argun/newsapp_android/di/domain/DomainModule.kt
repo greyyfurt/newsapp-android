@@ -5,11 +5,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mobi.argun.newsapp_android.core.util.dispatcher.DispatcherProvider
-import mobi.argun.newsapp_android.feature.data.data_source.ArticleDao
-import mobi.argun.newsapp_android.feature.data.data_source.ArticleDatabase
 import mobi.argun.newsapp_android.feature.data.remote.model.mapper.GetNewsMapper
 import mobi.argun.newsapp_android.feature.data.repository.NewsRepositoryImpl
 import mobi.argun.newsapp_android.feature.data.source.NewsRemoteDataSource
+import mobi.argun.newsapp_android.feature.data.source.ArticleDatabase
 import mobi.argun.newsapp_android.feature.domain.repository.NewsRepository
 import javax.inject.Singleton
 

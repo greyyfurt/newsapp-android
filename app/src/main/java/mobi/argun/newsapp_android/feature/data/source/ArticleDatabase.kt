@@ -1,9 +1,9 @@
-package mobi.argun.newsapp_android.feature.data.data_source
+package mobi.argun.newsapp_android.feature.data.source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import mobi.argun.newsapp_android.feature.data.data_source.util.Converters
+import mobi.argun.newsapp_android.feature.data.source.util.Converters
 import mobi.argun.newsapp_android.feature.domain.entity.Article
 
 /**
