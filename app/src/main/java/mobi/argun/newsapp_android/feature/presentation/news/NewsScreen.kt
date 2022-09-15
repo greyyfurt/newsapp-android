@@ -26,10 +26,6 @@ import mobi.argun.newsapp_android.ui.common.BottomNavigationBar
 import mobi.argun.newsapp_android.ui.common.PageHeader
 import mobi.argun.newsapp_android.ui.theme.Red100
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @Composable
 fun NewsScreen(
     navController: NavController,

@@ -12,10 +12,6 @@ import mobi.argun.newsapp_android.feature.domain.entity.Article
 import mobi.argun.newsapp_android.feature.domain.entity.GetNews
 import mobi.argun.newsapp_android.feature.domain.repository.NewsRepository
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 class NewsRepositoryImpl(
     private val dispatcher: DispatcherProvider,
     private val newsRemoteDataSource: NewsRemoteDataSource,

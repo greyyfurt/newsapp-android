@@ -17,10 +17,6 @@ import mobi.argun.newsapp_android.feature.presentation.util.SharedViewModel
 import mobi.argun.newsapp_android.ui.theme.Dark100
 import mobi.argun.newsapp_android.ui.theme.Dark60
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @Composable
 fun NewsDetailScreen(
     sharedVM: SharedViewModel
@@ -34,8 +30,10 @@ fun NewsDetailScreen(
                 Image(
                     painter = painter,
                     contentDescription = null,
-                    modifier = Modifier.fillMaxWidth(),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(max = 250.dp),
                 )
 
                 /** News' Title **/

@@ -6,10 +6,6 @@ import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * @author greyyfurt
- * Created on 12.09.2022
- */
 object DateFormatting {
 
     @SuppressLint("SimpleDateFormat")

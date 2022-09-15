@@ -16,10 +16,6 @@ import androidx.compose.ui.unit.sp
 import mobi.argun.newsapp_android.ui.theme.Red100
 import mobi.argun.newsapp_android.ui.theme.White100
 
-/**
- * @author greyyfurt
- * Created on 12.09.2022
- */
 @Composable
 fun PageHeader(title: String) {
     Box(

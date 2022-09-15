@@ -8,10 +8,6 @@ import mobi.argun.newsapp_android.core.util.dispatcher.CoroutineDispatcherProvid
 import mobi.argun.newsapp_android.core.util.dispatcher.DispatcherProvider
 import javax.inject.Singleton
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 @Module
 @InstallIn(SingletonComponent::class)
 class CoroutineDispatcherModule {

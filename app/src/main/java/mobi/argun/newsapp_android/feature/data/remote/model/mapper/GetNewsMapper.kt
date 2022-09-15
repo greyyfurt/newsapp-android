@@ -6,10 +6,6 @@ import mobi.argun.newsapp_android.feature.domain.entity.GetNews
 import mobi.argun.newsapp_android.feature.domain.entity.Source
 import mobi.argun.newsapp_android.feature.domain.util.DomainMapper
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 class GetNewsMapper : DomainMapper<GetNewsDto, GetNews> {
 
     override fun mapToDomainModel(model: GetNewsDto): GetNews =

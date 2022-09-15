@@ -9,10 +9,6 @@ import java.io.IOException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 open class RemoteDataSource {
 
     open suspend fun <T> performApiCall(

@@ -16,10 +16,6 @@ import mobi.argun.newsapp_android.feature.presentation.news.events.NewsServicesS
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsUiEvents
 import javax.inject.Inject
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val getNewsUseCase: GetNewsUseCase,

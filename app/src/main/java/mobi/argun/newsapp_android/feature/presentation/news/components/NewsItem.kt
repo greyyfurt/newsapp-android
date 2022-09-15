@@ -25,10 +25,6 @@ import mobi.argun.newsapp_android.core.vo.splitByCharacter
 import mobi.argun.newsapp_android.feature.domain.entity.Article
 import mobi.argun.newsapp_android.ui.theme.*
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @Composable
 fun NewsItem(
     article: Article,

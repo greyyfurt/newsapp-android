@@ -1,9 +1,5 @@
 package mobi.argun.newsapp_android.feature.data.remote.util
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 const val BASE_URL =
     "https://newsapi.org/"
 
