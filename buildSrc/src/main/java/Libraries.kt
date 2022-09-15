@@ -1,7 +1,3 @@
-/**
- * @author greyyfurt
- * Created on 8.09.2022
- */
 object Libraries {
     object AndroidX {
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
