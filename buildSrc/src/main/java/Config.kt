@@ -1,7 +1,3 @@
-/**
- * @author greyyfurt
- * Created on 8.09.2022
- */
 object Config {
     object Plugins {
         const val androidApp = "com.android.application"

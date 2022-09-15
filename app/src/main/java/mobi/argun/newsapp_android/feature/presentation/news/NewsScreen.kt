@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import mobi.argun.newsapp_android.feature.presentation.util.SharedViewModel
 import mobi.argun.newsapp_android.feature.presentation.news.components.NewsItem
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsUiEvents
 import mobi.argun.newsapp_android.feature.presentation.util.Screen
@@ -25,21 +26,18 @@ import mobi.argun.newsapp_android.ui.common.BottomNavigationBar
 import mobi.argun.newsapp_android.ui.common.PageHeader
 import mobi.argun.newsapp_android.ui.theme.Red100
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @Composable
 fun NewsScreen(
     navController: NavController,
-    viewModel: NewsViewModel = hiltViewModel()
+    sharedVM: SharedViewModel,
+    newsVM: NewsViewModel = hiltViewModel()
 ) {
     rememberSystemUiController().setStatusBarColor(
         Red100, darkIcons = false
     )
 
     /** Page State */
-    val pageState = viewModel.state.value
+    val pageState = newsVM.state.value
 
     Scaffold(
         topBar = {
@@ -71,14 +69,18 @@ fun NewsScreen(
                             && !pageState.isLoading
                         ) {
                             LaunchedEffect(key1 = true) {
-                                viewModel.onEvent(NewsUiEvents.LoadMoreNews)
+                                newsVM.onEvent(NewsUiEvents.LoadMoreNews)
                             }
                         }
 
                         NewsItem(
                             article = articles[it],
+                            onItemClicked = {
+                                sharedVM.addArticle(articles[it])
+                                navController.navigate(Screen.NewsDetailScreen.route)
+                            },
                             onFavoriteClicked = {
-                                viewModel.onEvent(
+                                newsVM.onEvent(
                                     event = NewsUiEvents.AddToFavorites(articles[it])
                                 )
                             }

@@ -4,10 +4,6 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import mobi.argun.newsapp_android.feature.domain.entity.Article
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @Dao
 interface ArticleDao {
     @Query("SELECT * FROM article")

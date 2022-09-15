@@ -3,10 +3,6 @@ package mobi.argun.newsapp_android.feature.domain.usecase.news
 import mobi.argun.newsapp_android.feature.domain.repository.NewsRepository
 import javax.inject.Inject
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 class GetNewsUseCase @Inject constructor(
     private val newsRepository: NewsRepository
 ) {

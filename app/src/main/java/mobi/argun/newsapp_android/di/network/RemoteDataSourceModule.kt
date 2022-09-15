@@ -8,10 +8,6 @@ import mobi.argun.newsapp_android.feature.data.remote.services.NewsApiService
 import mobi.argun.newsapp_android.feature.data.source.NewsRemoteDataSource
 import javax.inject.Singleton
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDataSourceModule {

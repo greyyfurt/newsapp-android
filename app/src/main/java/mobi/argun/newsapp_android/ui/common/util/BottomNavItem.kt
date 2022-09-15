@@ -4,10 +4,6 @@ import androidx.annotation.DrawableRes
 import mobi.argun.newsapp_android.R
 import mobi.argun.newsapp_android.feature.presentation.util.Screen
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 sealed class BottomNavItem(
     val route: String,
     val name: String,

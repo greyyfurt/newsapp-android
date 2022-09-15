@@ -4,10 +4,6 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-/**
- * @author greyyfurt
- * Created on 9.09.2022
- */
 @HiltAndroidApp
 class App : Application() {
 

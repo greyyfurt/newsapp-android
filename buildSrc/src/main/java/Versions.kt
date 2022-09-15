@@ -1,7 +1,3 @@
-/**
- * @author greyyfurt
- * Created on 8.09.2022
- */
 object Versions {
     const val composeVers = "1.0.0"
     const val compileSdk = 32

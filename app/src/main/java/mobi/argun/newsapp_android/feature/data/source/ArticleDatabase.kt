@@ -6,10 +6,6 @@ import androidx.room.TypeConverters
 import mobi.argun.newsapp_android.feature.data.source.util.Converters
 import mobi.argun.newsapp_android.feature.domain.entity.Article
 
-/**
- * @author greyyfurt
- * Created on 10.09.2022
- */
 @Database(
     entities = [Article::class],
     version = 1
