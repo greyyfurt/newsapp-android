@@ -32,6 +32,7 @@ import mobi.argun.newsapp_android.ui.theme.*
 @Composable
 fun NewsItem(
     article: Article,
+    onItemClicked: () -> Unit,
     onFavoriteClicked: () -> Unit,
 ) {
     Card(
@@ -42,6 +43,7 @@ fun NewsItem(
             .fillMaxWidth()
             .wrapContentHeight()
             .padding(horizontal = 16.dp)
+            .noRippleClickable { onItemClicked() }
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Box(
