@@ -7,15 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import mobi.argun.newsapp_android.R
+import mobi.argun.newsapp_android.core.vo.noRippleClickable
+import mobi.argun.newsapp_android.core.vo.splitByCharacter
 import mobi.argun.newsapp_android.feature.presentation.util.SharedViewModel
 import mobi.argun.newsapp_android.ui.theme.Dark100
 import mobi.argun.newsapp_android.ui.theme.Dark60
+import mobi.argun.newsapp_android.ui.theme.Teal200
 
 @Composable
 fun NewsDetailScreen(
@@ -38,7 +42,7 @@ fun NewsDetailScreen(
 
                 /** News' Title **/
                 Text(
-                    text = article.title.orEmpty(),
+                    text = article.title.splitByCharacter('-'),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
                     color = Dark100,
@@ -55,6 +59,22 @@ fun NewsDetailScreen(
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
+
+                /** Read More */
+                article.url?.let { newsUrl ->
+                    val uriHandler = LocalUriHandler.current
+                    Text(
+                        text = "Read More...",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Teal200,
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .noRippleClickable {
+                                uriHandler.openUri(newsUrl)
+                            }
+                    )
+                }
             }
         }
     }

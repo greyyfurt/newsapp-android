@@ -12,16 +12,16 @@ sealed class BottomNavItem(
     object News : BottomNavItem(
         route = Screen.NewsScreen.route,
         name = "News",
-        icon = R.drawable.ic_launcher_foreground
+        icon = R.drawable.ic_newspaper
     )
     object Favorites : BottomNavItem(
         route = Screen.FavoritesScreen.route,
         name = "Favorites",
-        icon = R.drawable.ic_launcher_foreground
+        icon = R.drawable.ic_favorites
     )
     object Search : BottomNavItem(
         route = Screen.SearchScreen.route,
         name = "Search",
-        icon = R.drawable.ic_launcher_foreground
+        icon = R.drawable.ic_search
     )
 }

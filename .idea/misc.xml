@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_calendar.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/ic_liked.xml" value="0.171" />
         <entry key="app/src/main/res/drawable/ic_unlike.xml" value="0.171" />
       </map>
     </option>
