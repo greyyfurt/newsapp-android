@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import mobi.argun.newsapp_android.feature.presentation.util.SharedViewModel
-import mobi.argun.newsapp_android.feature.presentation.news.components.NewsItem
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsUiEvents
 import mobi.argun.newsapp_android.feature.presentation.util.Screen
+import mobi.argun.newsapp_android.feature.presentation.util.SharedViewModel
 import mobi.argun.newsapp_android.ui.common.BottomNavigationBar
+import mobi.argun.newsapp_android.ui.common.NewsItem
 import mobi.argun.newsapp_android.ui.common.PageHeader
 import mobi.argun.newsapp_android.ui.theme.Red100
 
@@ -41,7 +41,7 @@ fun NewsScreen(
 
     Scaffold(
         topBar = {
-            PageHeader(title = "Breaking News")
+            PageHeader(title = "Daily News")
         },
         bottomBar = {
             BottomNavigationBar(
@@ -78,11 +78,6 @@ fun NewsScreen(
                             onItemClicked = {
                                 sharedVM.addArticle(articles[it])
                                 navController.navigate(Screen.NewsDetailScreen.route)
-                            },
-                            onFavoriteClicked = {
-                                newsVM.onEvent(
-                                    event = NewsUiEvents.AddToFavorites(articles[it])
-                                )
                             }
                         )
                     }

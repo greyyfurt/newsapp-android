@@ -10,16 +10,14 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import mobi.argun.newsapp_android.core.base.BaseViewModel
 import mobi.argun.newsapp_android.core.util.*
-import mobi.argun.newsapp_android.feature.domain.usecase.news.AddToFavoritesUseCase
-import mobi.argun.newsapp_android.feature.domain.usecase.news.GetNewsUseCase
+import mobi.argun.newsapp_android.feature.domain.usecase.NewsUseCases
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsServicesState
 import mobi.argun.newsapp_android.feature.presentation.news.events.NewsUiEvents
 import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val getNewsUseCase: GetNewsUseCase,
-    private val addToFavoritesUseCase: AddToFavoritesUseCase
+    private val newsUseCases: NewsUseCases
 ) : BaseViewModel() {
 
     private val _state = mutableStateOf(NewsServicesState())
@@ -36,7 +34,7 @@ class NewsViewModel @Inject constructor(
 
         viewModelScope.launch {
             getServicesJob =
-                getNewsUseCase.invoke(state.value.page).onEach { dataResult ->
+                newsUseCases.getNewsUseCase(state.value.page).onEach { dataResult ->
                     _state.value = when (dataResult) {
                         Empty ->
                             state.value.copy(
@@ -84,9 +82,6 @@ class NewsViewModel @Inject constructor(
             when (event) {
                 NewsUiEvents.LoadMoreNews -> {
                     getBreakingNews()
-                }
-                is NewsUiEvents.AddToFavorites -> {
-                    addToFavoritesUseCase(event.article)
                 }
             }
         }
