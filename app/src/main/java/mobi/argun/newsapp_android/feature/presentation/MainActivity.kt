@@ -43,11 +43,11 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(Screen.NewsDetailScreen.route) {
-                            NewsDetailScreen(sharedVM)
+                            NewsDetailScreen(navController, sharedVM)
                         }
 
                         composable(Screen.FavoritesScreen.route) {
-                            FavoritesScreen(navController = navController)
+                            FavoritesScreen(navController, sharedVM)
                         }
 
                         composable(Screen.SearchScreen.route) {

@@ -1,8 +1,7 @@
-package mobi.argun.newsapp_android.feature.presentation.news.components
+package mobi.argun.newsapp_android.ui.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -29,7 +28,6 @@ import mobi.argun.newsapp_android.ui.theme.*
 fun NewsItem(
     article: Article,
     onItemClicked: () -> Unit,
-    onFavoriteClicked: () -> Unit,
 ) {
     Card(
         elevation = 4.dp,
@@ -96,19 +94,6 @@ fun NewsItem(
                         )
                     )
                 }
-
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_liked),
-                    contentDescription = null,
-                    tint = White100,
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(16.dp)
-                        .wrapContentSize()
-                        .noRippleClickable {
-                            onFavoriteClicked()
-                        }
-                )
             }
 
             Text(

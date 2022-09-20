@@ -36,4 +36,8 @@ class NewsRepositoryImpl(
     override suspend fun addToFavorite(article: Article) {
         dao.insertArticle(article)
     }
+
+    override fun getMyFavorites(): Flow<List<Article>> {
+        return dao.getArticles()
+    }
 }

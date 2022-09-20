@@ -62,7 +62,7 @@ fun BottomNavigationItem(
     onClick: (String) -> Unit
 ) {
     val background = if (isSelected) Purple500 else Transparent
-    val contentColor = if (isSelected) White100 else Teal200
+    val contentColor = if (isSelected) White100 else Dark40
 
     Box(
         modifier = Modifier
